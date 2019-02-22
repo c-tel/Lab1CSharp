@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Lab1Telizhenko.Managers;
+using System;
 
 namespace Lab1Telizhenko.Models
 {
@@ -20,6 +17,11 @@ namespace Lab1Telizhenko.Models
         private void OnUserDataChanged(UserData userData)
         {
             UserDataChanged?.Invoke(userData);
+        }
+
+        internal void Back()
+        {
+            NavigationManager.Instance.Navigate(Modes.Welcome);
         }
     }
 }

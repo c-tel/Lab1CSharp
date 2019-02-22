@@ -1,9 +1,5 @@
 ﻿using Lab1Telizhenko.Managers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Lab1Telizhenko.Models
@@ -21,6 +17,8 @@ namespace Lab1Telizhenko.Models
         {
             var now = DateTime.Now;
             var age = now.Year - dateOfBirth.Year;
+            if (dateOfBirth > now.AddYears(-age))
+                --age;
             if (!AgeValid(age))
             {
                 MessageBox.Show("Invalid date given!");
@@ -39,7 +37,7 @@ namespace Lab1Telizhenko.Models
 
         private bool AgeValid(int age)
         {
-            return age > 0 && age < 135;
+            return age >= 0 && age < 135;
         }
 
         private WestZodiac CalculateWest(DateTime date)

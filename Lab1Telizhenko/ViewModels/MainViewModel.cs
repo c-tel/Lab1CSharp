@@ -1,12 +1,9 @@
 ﻿using Lab1Telizhenko.Models;
-using System;
-using System.Collections.Generic;
+using Lab1Telizhenko.Tools;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Lab1Telizhenko.ViewModels
 {
@@ -65,6 +62,24 @@ namespace Lab1Telizhenko.ViewModels
             Model.UserDataChanged += AssignUserData;
         }
 
+        private ICommand _backCommand;
+        public ICommand BackCommand
+        {
+            get
+            {
+                if (_backCommand == null)
+                {
+                    _backCommand = new RelayCommand<object>(BackExecute, BackCanExecute);
+                }
+                return _backCommand;
+            }
+            set
+            {
+                _backCommand = value;
+                OnPropertyChanged(nameof(BackCommand));
+            }
+        }
+
         private void AssignUserData(UserData userData)
         {
             Age = userData.Age;
@@ -76,6 +91,16 @@ namespace Lab1Telizhenko.ViewModels
         public void OnPropertyChanged([CallerMemberName] string prop = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
+
+        private bool BackCanExecute(object obj)
+        {
+            return true;
+        }
+
+        private void BackExecute(object obj)
+        {
+            Model.Back();
         }
     }
 }

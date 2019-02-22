@@ -1,11 +1,6 @@
-﻿using Lab1Telizhenko.ViewModels;
-using Lab1Telizhenko.Views;
+﻿using Lab1Telizhenko.Views;
 using Lab1Telizhenko.Windows;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab1Telizhenko.Models
 {
